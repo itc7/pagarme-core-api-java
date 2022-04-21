@@ -7,20 +7,17 @@ package me.pagar.api.controllers;
 
 import java.io.*;
 import java.util.*;
-import java.util.concurrent.*;
-import com.fasterxml.jackson.core.JsonProcessingException;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import me.pagar.api.*;
 import me.pagar.api.models.*;
 import me.pagar.api.exceptions.*;
-import me.pagar.api.http.client.HttpClient;
 import me.pagar.api.http.client.HttpContext;
 import me.pagar.api.http.request.HttpRequest;
 import me.pagar.api.http.response.HttpResponse;
 import me.pagar.api.http.response.HttpStringResponse;
 import me.pagar.api.http.client.APICallBack;
-import me.pagar.api.controllers.syncwrapper.APICallBackCatcher;
 
 public class TransfersController extends BaseController {
     //private static variables for the singleton pattern
@@ -106,7 +103,7 @@ public class TransfersController extends BaseController {
     private HttpRequest _buildGetTransferByIdRequest(
                 final String transferId) throws IOException, APIException {
         //the base uri for api requests
-        String _baseUri = Configuration.baseUri;
+        String _baseUri = PagarMeConfiguration.baseUri;
 
         //prepare query string for API call
         StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/transfers/{transfer_id}");
@@ -126,7 +123,7 @@ public class TransfersController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().get(_queryUrl, _headers, null,
-                Configuration.basicAuthUserName, Configuration.basicAuthPassword);
+                PagarMeConfiguration.basicAuthUserName, PagarMeConfiguration.basicAuthPassword);
 
         // Invoke the callback before request if its not null
         if (getHttpCallBack() != null) {
@@ -224,7 +221,7 @@ public class TransfersController extends BaseController {
     private HttpRequest _buildCreateTransferRequest(
                 final CreateTransfer request) throws IOException, APIException {
         //the base uri for api requests
-        String _baseUri = Configuration.baseUri;
+        String _baseUri = PagarMeConfiguration.baseUri;
 
         //prepare query string for API call
         StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/transfers/recipients");
@@ -240,7 +237,7 @@ public class TransfersController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().postBody(_queryUrl, _headers, APIHelper.serialize(request),
-                Configuration.basicAuthUserName, Configuration.basicAuthPassword);
+                PagarMeConfiguration.basicAuthUserName, PagarMeConfiguration.basicAuthPassword);
 
         // Invoke the callback before request if its not null
         if (getHttpCallBack() != null) {
@@ -333,7 +330,7 @@ public class TransfersController extends BaseController {
      */
     private HttpRequest _buildGetTransfersRequest() throws IOException, APIException {
         //the base uri for api requests
-        String _baseUri = Configuration.baseUri;
+        String _baseUri = PagarMeConfiguration.baseUri;
 
         //prepare query string for API call
         StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/transfers");
@@ -348,7 +345,7 @@ public class TransfersController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().get(_queryUrl, _headers, null,
-                Configuration.basicAuthUserName, Configuration.basicAuthPassword);
+                PagarMeConfiguration.basicAuthUserName, PagarMeConfiguration.basicAuthPassword);
 
         // Invoke the callback before request if its not null
         if (getHttpCallBack() != null) {

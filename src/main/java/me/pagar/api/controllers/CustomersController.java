@@ -7,20 +7,17 @@ package me.pagar.api.controllers;
 
 import java.io.*;
 import java.util.*;
-import java.util.concurrent.*;
-import com.fasterxml.jackson.core.JsonProcessingException;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import me.pagar.api.*;
 import me.pagar.api.models.*;
 import me.pagar.api.exceptions.*;
-import me.pagar.api.http.client.HttpClient;
 import me.pagar.api.http.client.HttpContext;
 import me.pagar.api.http.request.HttpRequest;
 import me.pagar.api.http.response.HttpResponse;
 import me.pagar.api.http.response.HttpStringResponse;
 import me.pagar.api.http.client.APICallBack;
-import me.pagar.api.controllers.syncwrapper.APICallBackCatcher;
 
 public class CustomersController extends BaseController {
     //private static variables for the singleton pattern
@@ -121,7 +118,7 @@ public class CustomersController extends BaseController {
                 final UpdateCardRequest request,
                 final String idempotencyKey) throws IOException, APIException {
         //the base uri for api requests
-        String _baseUri = Configuration.baseUri;
+        String _baseUri = PagarMeConfiguration.baseUri;
 
         //prepare query string for API call
         StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/customers/{customer_id}/cards/{card_id}");
@@ -146,7 +143,7 @@ public class CustomersController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().putBody(_queryUrl, _headers, APIHelper.serialize(request),
-                Configuration.basicAuthUserName, Configuration.basicAuthPassword);
+                PagarMeConfiguration.basicAuthUserName, PagarMeConfiguration.basicAuthPassword);
 
         // Invoke the callback before request if its not null
         if (getHttpCallBack() != null) {
@@ -259,7 +256,7 @@ public class CustomersController extends BaseController {
                 final UpdateAddressRequest request,
                 final String idempotencyKey) throws IOException, APIException {
         //the base uri for api requests
-        String _baseUri = Configuration.baseUri;
+        String _baseUri = PagarMeConfiguration.baseUri;
 
         //prepare query string for API call
         StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/customers/{customer_id}/addresses/{address_id}");
@@ -284,7 +281,7 @@ public class CustomersController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().putBody(_queryUrl, _headers, APIHelper.serialize(request),
-                Configuration.basicAuthUserName, Configuration.basicAuthPassword);
+                PagarMeConfiguration.basicAuthUserName, PagarMeConfiguration.basicAuthPassword);
 
         // Invoke the callback before request if its not null
         if (getHttpCallBack() != null) {
@@ -392,7 +389,7 @@ public class CustomersController extends BaseController {
                 final String tokenId,
                 final String idempotencyKey) throws IOException, APIException {
         //the base uri for api requests
-        String _baseUri = Configuration.baseUri;
+        String _baseUri = PagarMeConfiguration.baseUri;
 
         //prepare query string for API call
         StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/customers/{customer_id}/access-tokens/{token_id}");
@@ -416,7 +413,7 @@ public class CustomersController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().delete(_queryUrl, _headers, null,
-                Configuration.basicAuthUserName, Configuration.basicAuthPassword);
+                PagarMeConfiguration.basicAuthUserName, PagarMeConfiguration.basicAuthPassword);
 
         // Invoke the callback before request if its not null
         if (getHttpCallBack() != null) {
@@ -519,7 +516,7 @@ public class CustomersController extends BaseController {
                 final CreateCustomerRequest request,
                 final String idempotencyKey) throws IOException, APIException {
         //the base uri for api requests
-        String _baseUri = Configuration.baseUri;
+        String _baseUri = PagarMeConfiguration.baseUri;
 
         //prepare query string for API call
         StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/customers");
@@ -538,7 +535,7 @@ public class CustomersController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().postBody(_queryUrl, _headers, APIHelper.serialize(request),
-                Configuration.basicAuthUserName, Configuration.basicAuthPassword);
+                PagarMeConfiguration.basicAuthUserName, PagarMeConfiguration.basicAuthPassword);
 
         // Invoke the callback before request if its not null
         if (getHttpCallBack() != null) {
@@ -646,7 +643,7 @@ public class CustomersController extends BaseController {
                 final CreateAddressRequest request,
                 final String idempotencyKey) throws IOException, APIException {
         //the base uri for api requests
-        String _baseUri = Configuration.baseUri;
+        String _baseUri = PagarMeConfiguration.baseUri;
 
         //prepare query string for API call
         StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/customers/{customer_id}/addresses");
@@ -670,7 +667,7 @@ public class CustomersController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().postBody(_queryUrl, _headers, APIHelper.serialize(request),
-                Configuration.basicAuthUserName, Configuration.basicAuthPassword);
+                PagarMeConfiguration.basicAuthUserName, PagarMeConfiguration.basicAuthPassword);
 
         // Invoke the callback before request if its not null
         if (getHttpCallBack() != null) {
@@ -768,7 +765,7 @@ public class CustomersController extends BaseController {
     private HttpRequest _buildDeleteAccessTokensRequest(
                 final String customerId) throws IOException, APIException {
         //the base uri for api requests
-        String _baseUri = Configuration.baseUri;
+        String _baseUri = PagarMeConfiguration.baseUri;
 
         //prepare query string for API call
         StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/customers/{customer_id}/access-tokens/");
@@ -788,7 +785,7 @@ public class CustomersController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().get(_queryUrl, _headers, null,
-                Configuration.basicAuthUserName, Configuration.basicAuthPassword);
+                PagarMeConfiguration.basicAuthUserName, PagarMeConfiguration.basicAuthPassword);
 
         // Invoke the callback before request if its not null
         if (getHttpCallBack() != null) {
@@ -891,7 +888,7 @@ public class CustomersController extends BaseController {
                 final String customerId,
                 final String addressId) throws IOException, APIException {
         //the base uri for api requests
-        String _baseUri = Configuration.baseUri;
+        String _baseUri = PagarMeConfiguration.baseUri;
 
         //prepare query string for API call
         StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/customers/{customer_id}/addresses/{address_id}");
@@ -912,7 +909,7 @@ public class CustomersController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().get(_queryUrl, _headers, null,
-                Configuration.basicAuthUserName, Configuration.basicAuthPassword);
+                PagarMeConfiguration.basicAuthUserName, PagarMeConfiguration.basicAuthPassword);
 
         // Invoke the callback before request if its not null
         if (getHttpCallBack() != null) {
@@ -1020,7 +1017,7 @@ public class CustomersController extends BaseController {
                 final String addressId,
                 final String idempotencyKey) throws IOException, APIException {
         //the base uri for api requests
-        String _baseUri = Configuration.baseUri;
+        String _baseUri = PagarMeConfiguration.baseUri;
 
         //prepare query string for API call
         StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/customers/{customer_id}/addresses/{address_id}");
@@ -1044,7 +1041,7 @@ public class CustomersController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().delete(_queryUrl, _headers, null,
-                Configuration.basicAuthUserName, Configuration.basicAuthPassword);
+                PagarMeConfiguration.basicAuthUserName, PagarMeConfiguration.basicAuthPassword);
 
         // Invoke the callback before request if its not null
         if (getHttpCallBack() != null) {
@@ -1152,7 +1149,7 @@ public class CustomersController extends BaseController {
                 final CreateCardRequest request,
                 final String idempotencyKey) throws IOException, APIException {
         //the base uri for api requests
-        String _baseUri = Configuration.baseUri;
+        String _baseUri = PagarMeConfiguration.baseUri;
 
         //prepare query string for API call
         StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/customers/{customer_id}/cards");
@@ -1176,7 +1173,7 @@ public class CustomersController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().postBody(_queryUrl, _headers, APIHelper.serialize(request),
-                Configuration.basicAuthUserName, Configuration.basicAuthPassword);
+                PagarMeConfiguration.basicAuthUserName, PagarMeConfiguration.basicAuthPassword);
 
         // Invoke the callback before request if its not null
         if (getHttpCallBack() != null) {
@@ -1299,7 +1296,7 @@ public class CustomersController extends BaseController {
                 final String email,
                 final String code) throws IOException, APIException {
         //the base uri for api requests
-        String _baseUri = Configuration.baseUri;
+        String _baseUri = PagarMeConfiguration.baseUri;
 
         //prepare query string for API call
         StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/customers");
@@ -1336,7 +1333,7 @@ public class CustomersController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().get(_queryUrl, _headers, null,
-                Configuration.basicAuthUserName, Configuration.basicAuthPassword);
+                PagarMeConfiguration.basicAuthUserName, PagarMeConfiguration.basicAuthPassword);
 
         // Invoke the callback before request if its not null
         if (getHttpCallBack() != null) {
@@ -1444,7 +1441,7 @@ public class CustomersController extends BaseController {
                 final UpdateCustomerRequest request,
                 final String idempotencyKey) throws IOException, APIException {
         //the base uri for api requests
-        String _baseUri = Configuration.baseUri;
+        String _baseUri = PagarMeConfiguration.baseUri;
 
         //prepare query string for API call
         StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/customers/{customer_id}");
@@ -1468,7 +1465,7 @@ public class CustomersController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().putBody(_queryUrl, _headers, APIHelper.serialize(request),
-                Configuration.basicAuthUserName, Configuration.basicAuthPassword);
+                PagarMeConfiguration.basicAuthUserName, PagarMeConfiguration.basicAuthPassword);
 
         // Invoke the callback before request if its not null
         if (getHttpCallBack() != null) {
@@ -1576,7 +1573,7 @@ public class CustomersController extends BaseController {
                 final CreateAccessTokenRequest request,
                 final String idempotencyKey) throws IOException, APIException {
         //the base uri for api requests
-        String _baseUri = Configuration.baseUri;
+        String _baseUri = PagarMeConfiguration.baseUri;
 
         //prepare query string for API call
         StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/customers/{customer_id}/access-tokens");
@@ -1600,7 +1597,7 @@ public class CustomersController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().postBody(_queryUrl, _headers, APIHelper.serialize(request),
-                Configuration.basicAuthUserName, Configuration.basicAuthPassword);
+                PagarMeConfiguration.basicAuthUserName, PagarMeConfiguration.basicAuthPassword);
 
         // Invoke the callback before request if its not null
         if (getHttpCallBack() != null) {
@@ -1708,7 +1705,7 @@ public class CustomersController extends BaseController {
                 final Integer page,
                 final Integer size) throws IOException, APIException {
         //the base uri for api requests
-        String _baseUri = Configuration.baseUri;
+        String _baseUri = PagarMeConfiguration.baseUri;
 
         //prepare query string for API call
         StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/customers/{customer_id}/access-tokens");
@@ -1738,7 +1735,7 @@ public class CustomersController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().get(_queryUrl, _headers, null,
-                Configuration.basicAuthUserName, Configuration.basicAuthPassword);
+                PagarMeConfiguration.basicAuthUserName, PagarMeConfiguration.basicAuthPassword);
 
         // Invoke the callback before request if its not null
         if (getHttpCallBack() != null) {
@@ -1846,7 +1843,7 @@ public class CustomersController extends BaseController {
                 final Integer page,
                 final Integer size) throws IOException, APIException {
         //the base uri for api requests
-        String _baseUri = Configuration.baseUri;
+        String _baseUri = PagarMeConfiguration.baseUri;
 
         //prepare query string for API call
         StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/customers/{customer_id}/cards");
@@ -1876,7 +1873,7 @@ public class CustomersController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().get(_queryUrl, _headers, null,
-                Configuration.basicAuthUserName, Configuration.basicAuthPassword);
+                PagarMeConfiguration.basicAuthUserName, PagarMeConfiguration.basicAuthPassword);
 
         // Invoke the callback before request if its not null
         if (getHttpCallBack() != null) {
@@ -1984,7 +1981,7 @@ public class CustomersController extends BaseController {
                 final String cardId,
                 final String idempotencyKey) throws IOException, APIException {
         //the base uri for api requests
-        String _baseUri = Configuration.baseUri;
+        String _baseUri = PagarMeConfiguration.baseUri;
 
         //prepare query string for API call
         StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/customers/{customer_id}/cards/{card_id}/renew");
@@ -2008,7 +2005,7 @@ public class CustomersController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().post(_queryUrl, _headers, null,
-                Configuration.basicAuthUserName, Configuration.basicAuthPassword);
+                PagarMeConfiguration.basicAuthUserName, PagarMeConfiguration.basicAuthPassword);
 
         // Invoke the callback before request if its not null
         if (getHttpCallBack() != null) {
@@ -2111,7 +2108,7 @@ public class CustomersController extends BaseController {
                 final String customerId,
                 final String tokenId) throws IOException, APIException {
         //the base uri for api requests
-        String _baseUri = Configuration.baseUri;
+        String _baseUri = PagarMeConfiguration.baseUri;
 
         //prepare query string for API call
         StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/customers/{customer_id}/access-tokens/{token_id}");
@@ -2132,7 +2129,7 @@ public class CustomersController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().get(_queryUrl, _headers, null,
-                Configuration.basicAuthUserName, Configuration.basicAuthPassword);
+                PagarMeConfiguration.basicAuthUserName, PagarMeConfiguration.basicAuthPassword);
 
         // Invoke the callback before request if its not null
         if (getHttpCallBack() != null) {
@@ -2240,7 +2237,7 @@ public class CustomersController extends BaseController {
                 final UpdateMetadataRequest request,
                 final String idempotencyKey) throws IOException, APIException {
         //the base uri for api requests
-        String _baseUri = Configuration.baseUri;
+        String _baseUri = PagarMeConfiguration.baseUri;
 
         //prepare query string for API call
         StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/Customers/{customer_id}/metadata");
@@ -2264,7 +2261,7 @@ public class CustomersController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().patchBody(_queryUrl, _headers, APIHelper.serialize(request),
-                Configuration.basicAuthUserName, Configuration.basicAuthPassword);
+                PagarMeConfiguration.basicAuthUserName, PagarMeConfiguration.basicAuthPassword);
 
         // Invoke the callback before request if its not null
         if (getHttpCallBack() != null) {
@@ -2372,7 +2369,7 @@ public class CustomersController extends BaseController {
                 final String cardId,
                 final String idempotencyKey) throws IOException, APIException {
         //the base uri for api requests
-        String _baseUri = Configuration.baseUri;
+        String _baseUri = PagarMeConfiguration.baseUri;
 
         //prepare query string for API call
         StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/customers/{customer_id}/cards/{card_id}");
@@ -2396,7 +2393,7 @@ public class CustomersController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().delete(_queryUrl, _headers, null,
-                Configuration.basicAuthUserName, Configuration.basicAuthPassword);
+                PagarMeConfiguration.basicAuthUserName, PagarMeConfiguration.basicAuthPassword);
 
         // Invoke the callback before request if its not null
         if (getHttpCallBack() != null) {
@@ -2504,7 +2501,7 @@ public class CustomersController extends BaseController {
                 final Integer page,
                 final Integer size) throws IOException, APIException {
         //the base uri for api requests
-        String _baseUri = Configuration.baseUri;
+        String _baseUri = PagarMeConfiguration.baseUri;
 
         //prepare query string for API call
         StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/customers/{customer_id}/addresses");
@@ -2534,7 +2531,7 @@ public class CustomersController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().get(_queryUrl, _headers, null,
-                Configuration.basicAuthUserName, Configuration.basicAuthPassword);
+                PagarMeConfiguration.basicAuthUserName, PagarMeConfiguration.basicAuthPassword);
 
         // Invoke the callback before request if its not null
         if (getHttpCallBack() != null) {
@@ -2632,7 +2629,7 @@ public class CustomersController extends BaseController {
     private HttpRequest _buildGetCustomerRequest(
                 final String customerId) throws IOException, APIException {
         //the base uri for api requests
-        String _baseUri = Configuration.baseUri;
+        String _baseUri = PagarMeConfiguration.baseUri;
 
         //prepare query string for API call
         StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/customers/{customer_id}");
@@ -2652,7 +2649,7 @@ public class CustomersController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().get(_queryUrl, _headers, null,
-                Configuration.basicAuthUserName, Configuration.basicAuthPassword);
+                PagarMeConfiguration.basicAuthUserName, PagarMeConfiguration.basicAuthPassword);
 
         // Invoke the callback before request if its not null
         if (getHttpCallBack() != null) {
@@ -2755,7 +2752,7 @@ public class CustomersController extends BaseController {
                 final String customerId,
                 final String cardId) throws IOException, APIException {
         //the base uri for api requests
-        String _baseUri = Configuration.baseUri;
+        String _baseUri = PagarMeConfiguration.baseUri;
 
         //prepare query string for API call
         StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/customers/{customer_id}/cards/{card_id}");
@@ -2776,7 +2773,7 @@ public class CustomersController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().get(_queryUrl, _headers, null,
-                Configuration.basicAuthUserName, Configuration.basicAuthPassword);
+                PagarMeConfiguration.basicAuthUserName, PagarMeConfiguration.basicAuthPassword);
 
         // Invoke the callback before request if its not null
         if (getHttpCallBack() != null) {

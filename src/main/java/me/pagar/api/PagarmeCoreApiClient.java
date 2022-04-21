@@ -116,7 +116,7 @@ public class PagarmeCoreApiClient {
      */     
     public PagarmeCoreApiClient(String basicAuthUserName, String basicAuthPassword) {
         this();
-        Configuration.basicAuthUserName = basicAuthUserName;
-        Configuration.basicAuthPassword = basicAuthPassword;
+        PagarMeConfiguration.basicAuthUserName = basicAuthUserName;
+        PagarMeConfiguration.basicAuthPassword = basicAuthPassword;
     }
 }
