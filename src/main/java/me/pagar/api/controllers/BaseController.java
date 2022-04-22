@@ -12,8 +12,14 @@ import me.pagar.api.http.client.HttpContext;
 import me.pagar.api.http.client.HttpCallBack;
 import me.pagar.api.http.client.OkClient;
 import me.pagar.api.http.response.HttpResponse;
+import me.pagar.api.http.response.HttpStringResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class BaseController {
+
+    private static final Logger log = LoggerFactory.getLogger(BaseController.class);
+
     /**
      * Private variable to keep shared reference of client instance
      */
@@ -79,6 +85,16 @@ public abstract class BaseController {
             throws APIException {
         //get response status code to validate
         int responseCode = _response.getStatusCode();
+        log.info("pagar_api_response_code:{}", responseCode);
+
+        try {
+            String response_body = ((HttpStringResponse)context.getResponse()).getBody();
+            log.info("pagar_api_response_body:{}", response_body);
+        } catch (Exception e) {
+            log.warn("pagar_api_read_response_body_fail.msg:{}", e.getMessage());
+        }
+
+
         if (responseCode == 400) {
             throw new MErrorException("Invalid request", context);
         }
